@@ -1,0 +1,267 @@
+﻿/*----------Layout styles----------*/
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: Arial;
+}
+
+body{
+	background: #E9E9E9;
+}
+
+/* Container Div*/
+.container{
+	width: 80%;
+	margin: 20px auto;
+}
+
+/* Header */
+header{
+	padding: 10px;
+	background: #D14841;
+}
+
+/* Nav Bar */
+header nav ul{
+	list-style-type: none;
+	margin: 0;
+}
+
+header nav ul li{
+	font-weight: bold;
+	font-size: 16px;
+	display: inline-block;
+	margin: 0 4px;
+}
+
+header nav ul li a{
+	color: #fff;
+	display: block;
+	text-decoration: none;
+	padding: 10px 15px;
+	border-radius: 16px;
+	transition: background .3s
+}
+
+header nav ul li a:hover{
+	background: #A3312D;
+}
+
+header nav ul li a span{
+	margin-right: 5px;
+}
+
+/*----------Index.cshtml----------*/
+
+/* Main Section: Form; */
+.main{
+	background: #fff;
+	width: 70%;
+	padding: 25px;
+	border-radius: 20px;
+	float: left;
+	margin-bottom: 20px;
+	box-shadow: 0px 0px 20px rgba(130,130,130,.3);
+}
+
+.main h3{
+	color: #505050;
+}
+
+.main form{
+	margin: 0 auto;
+	width: 70%;
+	text-align: center;
+}
+/* Form header */
+.main form h3{
+	font-size: 25px;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+/* Inputs */
+.block{
+	display: block;
+	width: 100%;
+}
+
+.input-style{
+	font-size: 18px;
+	color: #404040;
+	padding: 15px;
+	padding-left: 20px;
+	margin-bottom: 10px;
+	border-radius: 5px;
+	border: 1px solid #ababab;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+.input-style:focus{
+	border: 1px solid #D14841;
+}
+
+/* Select */
+#selectDay, #selectMonth, #selectYear{
+	padding-left: 10px;
+	text-align: center;
+}
+
+#selectDay{
+	margin-left: 10px;
+}
+
+p.formPar{
+	font-size: 18px;
+	color: #404040;
+	margin: 5px 0;
+	display: inline-block;
+}
+
+table{
+	margin: 10px auto;
+}
+
+table tr td{
+	padding: 0 5px;
+	width: 30%;
+}
+
+table tr td:first-child{
+	text-align: right;
+	width: 20%;
+}
+
+table tr td label{
+	width: 100%;
+}
+
+/* Radios */
+.radioLabel, .checkLabel{
+	display: inline-block;
+	background: #fff;
+	border: 1px solid #D14841;
+	padding: 10px 15px;
+	color: #D14841;
+	border-radius: 5px;
+	cursor: pointer;
+	margin: 5px 5px;
+	transition: all .3s;
+}
+
+.radioLabel:hover, .checkLabel:hover{
+	background: #D14841;
+	color: #fff;
+}
+
+input[type="radio"]:checked + .radioLabel{
+	background: #D14841;
+	color: #fff;
+}
+
+/* Checkboxes */
+input[type="checkbox"]:checked + .checkLabel{
+	background: #D14841;
+	color: #fff;
+}
+
+/* Terms & Conditions */
+#checkAccept{
+	margin-top: 15px;
+}
+
+.checkLabelAccept, .anchorTerms{
+	color: #404040;
+	font-size: 15px;
+}
+
+.anchorTerms{
+	font-weight: bold;
+	text-decoration: none;
+}
+
+/* Submit */
+input[type="submit"]{
+	border: 2px solid #D14841;
+	padding: 15px;
+	background: #fff;
+	color: #D14841;
+	font-weight: bold;
+	margin-top: 35px;
+	transition: all .3s;
+}
+
+input[type="submit"]:hover{
+	cursor: pointer;
+	background: #D14841;
+	color: #fff;
+}
+
+/* Valentine */
+aside{
+	text-align: center;
+	float: left;
+	width: 25%;
+	background: #D14841;
+	margin-left: 20px;
+	padding: 30px 20px;
+	border-radius: 20px;
+	transition: all .3s;
+	box-shadow: 0px 0px 20px rgba(130,130,130,.3);
+}
+
+aside span.fa-heart{
+	display: inline-block;
+	background: #fff;
+	border-radius: 50%;
+	padding: 20px;
+	color: #D14841;
+	transition: all .3s;
+}
+
+aside p{
+	color: #fff;
+	margin-top: 30px;
+	font-size: 18px;
+}
+
+
+/*----------EmailSent.cshtml----------*/
+p{
+	font-size: 30px;
+	color: #505050;
+	text-align: center;
+	margin-top: 170px;
+}
+
+span#emailReg{
+	display: block;
+	font-weight: bold;
+	color: #D14841;
+}
+
+a.buttonMail{
+	display: block;
+	width: 20%;
+	text-decoration: none;
+	color: #fff;
+	background: #D14841;
+	padding: 15px;
+	font-size: 24px;
+	border-radius: 5px;
+	text-align: center;
+	margin: 40px auto;
+	transition: background .3s;
+	font-weight: bold;
+}
+
+a.buttonMail:hover{
+	background: #9B2F2B;
+}
+
+a.buttonMail span{
+	margin-right: 15px;
+}

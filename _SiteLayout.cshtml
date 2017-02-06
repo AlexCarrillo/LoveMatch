@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <link href="~/heart.ico" rel="shortcut icon" type="image/x-icon" />
+        <link rel="stylesheet" href="~/Content/fonts/fontawesome/css/font-awesome.min.css">
+        <link href="~/Content/Site.css" rel="stylesheet" />
+        <title>@Page.Title</title>
+    </head>
+    <body>
+        <!-- Header -->
+        <header>
+            <!-- Nav Bar -->
+            <nav>
+                <ul>
+                    <li><a href="http://www.google.com"><span class="fa fa-reorder"></span>Intrucciones</a></li>
+                    <li><a href="#"><span class="fa fa-users"></span>Quiénes somos</a></li>
+                    <li><a href="#"><span class="fa fa-envelope"></span>Contacto</a></li>
+                </ul>
+            </nav>
+        </header>
+        @RenderBody()
+        <script src="~/Scripts/jquery.js"></script>
+        <script src="~/Scripts/ui.js"></script>
+    </body>
+</html>
