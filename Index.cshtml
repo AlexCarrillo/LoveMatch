@@ -57,7 +57,7 @@
                 vSMTP.Send(vMensaje); //Enviamos el correo
             } catch {
                 //El registro falló y visualizaremos la páginad de error
-                Response.Redirect("~/EmailSentError");
+                Response.Redirect("~/SentError");
             }
 
         }
@@ -76,10 +76,10 @@
         <form method="post" action="">
             <h3>Conoce a tu alma gemela</h3>
             <!-- Inputs -->
-            <input class="block input-style" type="text" name="txtUser" placeholder="Usuario">
-            <input class="block input-style" type="password" name="txtPassword" placeholder="Contraseña">
-            <input class="block input-style" type="email" name="txtEmail" placeholder="Correo Electrónico">
-            <select class="block input-style" name="selectCountry" id="selectCountry">
+            <input class="block input-style" type="text" name="txtUser" placeholder="Usuario" required>
+            <input class="block input-style" type="password" name="txtPassword" placeholder="Contraseña" required>
+            <input class="block input-style" type="email" name="txtEmail" placeholder="Correo Electrónico" required>
+            <select class="block input-style" name="selectCountry" id="selectCountry" required>
                 <option value="wrong" disabled selected>País</option>
                 <option value="mex">México</option>
                 <option value="usa">Estados Unidos</option>
@@ -89,17 +89,13 @@
             </select>
             
             <!-- Birthday -->
-            <p class="formPar">Fecha Nacimiento: </p>
-            <select class="input-style" name="selectAgeDay" id="selectDay">
+            <p class="formPar">Cumpleaños: </p>
+            <select class="input-style" name="selectAgeDay" id="selectDay" required>
                 <option value="wrong" disabled selected>Día</option>
             </select>
 
-            <select class="input-style" name="selectAgeMonth" id="selectMonth">
+            <select class="input-style" name="selectAgeMonth" id="selectMonth" required>
                 <option value="wrong" disabled selected>Mes</option>
-            </select>
-
-            <select class="input-style" name="selectAgeYear" id="selectYear">
-                <option value="wrong" disabled selected>Año</option>
             </select>
 
             <!-- Interests Table -->
@@ -140,14 +136,18 @@
             </table>
 
             <!-- Terms & Conditions -->
-            <input id="checkAccept" name="checkAccept" type="checkbox" value="accept">
+            <input id="checkAccept" name="checkAccept" type="checkbox" value="accept" required>
             <label class="checkLabelAccept" for="checkAccept">
                 He leído y acepto los
                 <a class="anchorTerms" href="#">Términos y Condiciones</a>
             </label>
 
+            <!-- Age Validation -->
+            <br><input id="checkEighteen" type="checkbox" required>
+            <label class="checkLabelAccept" for="checkEighteen">Tengo 18 años o más</label>
+
             <!-- Submit form -->
-            <input class="block input-style" type="submit" value="Enviar">
+            <input class="block input-style" type="submit" value="Enviar" disabled onmouseover="validar(this)">
         </form>
     </section>
     <a href="#">
