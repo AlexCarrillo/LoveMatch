@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="LOVEMATCH" Class="LoveMatchDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-PT356BH\ALEXSERVER;Initial Catalog=LOVEMATCH;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="LOVEMATCHConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Usuarios" Member="Usuarios">
+    <Type Name="Usuario">
+      <Column Name="usuario" Member="usuario1" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="contraseña" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="correo" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="pais" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="fecha_nacimiento" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="sexo" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="interes" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="busca" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="id_usuario" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>

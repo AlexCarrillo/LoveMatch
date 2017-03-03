@@ -6,18 +6,65 @@
 
 @using System.Net;
 @using System.Net.Mail;
+@using System.Linq;
 
+
+<script>
+    function fnObtenerDatos() {
+
+        var interes = document.getElementsByName("inputInterest");
+        var userInteres = "";
+       
+        for (var i = 0; i < interes.length; i++) {
+            
+            if (interes[i].checked == true) {
+                userInteres = userInteres.concat(interes[i].value + ",");
+            }
+        }
+       
+        document.getElementById('userInteres').value = userInteres;
+
+        var sexo = document.getElementsByName("inputSex");
+        var userSexo = "";
+        for (var i = 0; i < sexo.length; i++) {
+            if (sexo[i].checked == true) {
+                userSexo = sexo[i].value;
+            }
+        }
+        document.getElementById('userSexo').value = userSexo;
+
+        var busca = document.getElementsByName("inputLooking");
+
+        var userBusca = "";
+        for (var i = 0; i < busca.length; i++) {
+            if (busca[i].checked == true) {
+                userBusca = userBusca.concat(busca[i].value + ",");
+            }
+        }
+        document.getElementById('userBusca').value = userBusca;
+
+    }
+</script>
 @{
 
     if (IsPost)
     {
 
+       
 
         const string sRemitente = "lovematchitl@gmail.com"; //Variable para almacenar el correo de la página de citas
         const string sNombreRemitente = "LoveMatch"; //Variable para almacenar el nombre de la página de citas
         const string sContraseña = "LOVEMATCHITL1"; //Variable para almacenar la contraseña del correo de la página de citas
         string sDestinatario = Request["txtEmail"]; //Variable para saber a qué email se mandará el correo
         string sUsuario = Request["txtUser"]; //Variable para saber el nombre de usario
+        string sUsuarioContraseña = Request["txtPassword"];
+        string sPais = Request["selectCountry"];
+        string sDia = Request["selectAgeDay"];
+        string sMes = Request["selectAgeMonth"];
+        string sAño = Request["selectAgeYear"];
+        string sSexo = Request["userSexo"];
+        string sInteres = Request["userInteres"];
+        string sBusca = Request["userBusca"];
         const string sAsunto = "REGISTRO LOVE MATCH"; //Variable para asignar el asunto del correo
         string sBody;
 
@@ -55,6 +102,21 @@
         {
             try {
                 vSMTP.Send(vMensaje); //Enviamos el correo
+                LoveMatchDataContext dataContext = new LoveMatchDataContext();
+                Usuario user = new Usuario();
+                user.usuario1 = sUsuario;
+                user.contraseña = sUsuarioContraseña;
+                user.correo = sDestinatario;
+                user.fecha_nacimiento = Convert.ToDateTime(sDia + "-"+ sMes +"-"+ sAño);
+                user.interes = sInteres;
+                user.pais = sPais;
+                user.sexo = sSexo;
+                user.busca = sBusca;
+
+                dataContext.Usuarios.InsertOnSubmit(user);
+                dataContext.SubmitChanges();
+
+                
             } catch {
                 //El registro falló y visualizaremos la páginad de error
                 Response.Redirect("~/EmailSentError");
@@ -73,19 +135,22 @@
     <!-- Main Section -->
     <section class="main">
         <!-- Form -->
-        <form method="post" action="">
+        <form method="post" action="" onsubmit="fnObtenerDatos();">
             <h3>Conoce a tu alma gemela</h3>
+            <input type="hidden" name="userSexo" id="userSexo" value=""/>
+            <input type="hidden" name="userInteres" id="userInteres" value="" />
+            <input type="hidden" name="userBusca" id="userBusca" value=""/>
             <!-- Inputs -->
             <input class="block input-style" type="text" name="txtUser" placeholder="Usuario">
             <input class="block input-style" type="password" name="txtPassword" placeholder="Contraseña">
             <input class="block input-style" type="email" name="txtEmail" placeholder="Correo Electrónico">
-            <select class="block input-style" name="selectCountry" id="selectCountry">
+            <select class="block input-style" name="selectCountry" id="selectCountry">  
                 <option value="wrong" disabled selected>País</option>
-                <option value="mex">México</option>
-                <option value="usa">Estados Unidos</option>
-                <option value="can">Canadá</option>
-                <option value="col">Colombia</option>
-                <option value="nor">Noruega</option>
+                <option value="México">México</option>
+                <option value="USA">Estados Unidos</option>
+                <option value="Canada">Canadá</option>
+                <option value="Colombia">Colombia</option>
+                <option value="Noruega">Noruega</option>
             </select>
             
             <!-- Birthday -->
@@ -107,33 +172,33 @@
                 <tr>
                     <td><p class="formPar">Soy:</p></td>
                     <td>
-                        <input id="radioMale" type="radio" name="inputSex" value="male" hidden="true" checked>
+                        <input id="radioMale" type="radio" name="inputSex" value="masculino" hidden="true" checked>
                         <label class="radioLabel" for="radioMale">Hombre</label>
                     </td>
                     <td>
-                        <input id="radioFemale" type="radio" name="inputSex" value="female" hidden="true">
+                        <input id="radioFemale" type="radio" name="inputSex" value="femenino" hidden="true">
                         <label class="radioLabel" for="radioFemale">Mujer</label>
                     </td>
                 </tr>
                 <tr>
                     <td><p class="formPar">Me interesan:</p></td>
                     <td>
-                        <input id="checkMen" type="checkbox" name="inputInterest" value="men" hidden="true">
+                        <input id="checkMen" type="checkbox" name="inputInterest" value="hombres" hidden="true">
                         <label class="checkLabel" for="checkMen">Hombres</label>
                     </td>
                     <td>
-                        <input id="checkWomen" type="checkbox" name="inputInterest" value="women" hidden="true">
+                        <input id="checkWomen" type="checkbox" name="inputInterest" value="mujeres" hidden="true">
                         <label class="checkLabel" for="checkWomen">Mujeres</label>
                     </td>
                 </tr>
                 <tr>
                     <td><p class="formPar">Busco:</p></td>
                     <td>
-                        <input id="checkDate" type="checkbox" name="inputLooking" value="date" hidden="true">
+                        <input id="checkDate" type="checkbox" name="inputLooking" value="cita" hidden="true">
                         <label class="checkLabel" for="checkDate">Cita</label>
                     </td>
                     <td>
-                        <input id="checkCasual" type="checkbox" name="inputLooking" value="casual" hidden="true">
+                        <input id="checkCasual" type="checkbox" name="inputLooking" value="encuentro casual" hidden="true">
                         <label class="checkLabel" for="checkCasual">Encuentro Casual</label>
                     </td>
                 </tr>
@@ -147,7 +212,7 @@
             </label>
 
             <!-- Submit form -->
-            <input class="block input-style" type="submit" value="Enviar">
+            <input class="block input-style" type="submit" value="Enviar" onsubmit="fnObtenerDatos();" >
         </form>
     </section>
     <a href="#">
@@ -156,5 +221,11 @@
             <p>Conoce nuestra oferta de San Valentin</p>
         </aside>
     </a>
-   
+
+    <aside style="width:35%; float:left;">
+        <video width="100%" controls="controls">
+            <source src="~/Videos/parejaIdeal.mp4" type="video/mp4" />
+        </video>
+    </aside>
+    
 </div>

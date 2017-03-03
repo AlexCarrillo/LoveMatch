@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="LoveMatch">
+  <DataContextMoniker Name="/LoveMatchDataContext" />
+  <nestedChildShapes>
+    <classShape Id="65097643-db04-42e1-bad9-f17492993569" absoluteBounds="3.5, 1, 2, 2.5401025390625">
+      <DataClassMoniker Name="/LoveMatchDataContext/Usuario" />
+      <nestedChildShapes>
+        <elementListCompartment Id="567f7c6f-30ae-42a3-af26-a59d3f3da163" absoluteBounds="3.5149999999999997, 1.46, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
